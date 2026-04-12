@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: krishna-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: krishna
+  template:
+    metadata:
+      labels:
+        app: krishna
+    spec:
+      containers:
+      - name: krishna-container
+        image: krishna-nginx
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+        env:
+        - name: STUDENT_NAME
+          value: "Krishna"
